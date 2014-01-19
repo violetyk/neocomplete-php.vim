@@ -37,13 +37,8 @@ function! s:source.hooks.on_init(context) "{{{
   endif
 
   if empty(g:neocomplete_php_dict.internal_functions)
-    if l:locale == 'ja'
-      call s:Message.warn('no dictionary. run command :PhpMakeDictJa')
-    else
-      call s:Message.warn('no dictionary. run command :PhpMakeDictEn')
-    endif
+    call s:Message.warn('no dictionary. run command :PhpMakeDict ' . l:locale)
     sleep 3
-
     return
   endif
 
