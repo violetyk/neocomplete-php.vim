@@ -15,12 +15,18 @@ let s:cache_dir = s:work_dir . 'cache/'
 
 let s:debug_log = '/var/tmp/neocomplete-php.log'
 
-function! neocomplete#sources#php#helper#make_dict(locale)
+function! neocomplete#sources#php#helper#make_dict(...)
 
-  call neocomplete#sources#php#helper#prepare_php_manual(a:locale)
+  if a:0 == 0
+    let l:locale = g:neocomplete_php_locale
+  else
+    let l:local = a:1
+  endif
+
+  call neocomplete#sources#php#helper#prepare_php_manual(l:locale)
 
   let l:function_list = neocomplete#sources#php#helper#get_internal_function_list()
-  let l:phpdoc_reference_dir = neocomplete#sources#php#helper#dir_phpdoc_reference(a:locale)
+  let l:phpdoc_reference_dir = neocomplete#sources#php#helper#dir_phpdoc_reference(l:locale)
 
   " internal functions
   let l:internal_functions = []
@@ -54,7 +60,7 @@ function! neocomplete#sources#php#helper#make_dict(locale)
 
   " cache
   call s:File.mkdir_nothrow(s:cache_dir, 'p')
-  call s:Cache.writefile(s:cache_dir, a:locale, [string(l:internal_functions)])
+  call s:Cache.writefile(s:cache_dir, l:locale, [string(l:internal_functions)])
 
   redraw!
   echo 'finish.'

@@ -11,7 +11,7 @@ let g:neocomplete_php_dict = {
   \ 'internal_functions' : []
   \ }
 
-command! -n=1 PhpMakeDict call neocomplete#sources#php#helper#make_dict(<f-args>)
+command! -nargs=? PhpMakeDict call neocomplete#sources#php#helper#make_dict(<f-args>)
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
