@@ -119,7 +119,8 @@ function! neocomplete#sources#php#helper#get_internal_function_list() " {{{
   let l:function_list = []
 
   try
-    let l:code = 'echo json_encode(get_defined_functions()["internal"]);'
+    let l:code  = '$functions = get_defined_functions();'
+    let l:code .= 'echo json_encode($functions["internal"]);'
     let l:cmd = 'php -r ''' . l:code . ''''
     let l:function_list = eval(system(l:cmd))
   catch
