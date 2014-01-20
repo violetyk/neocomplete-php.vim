@@ -20,7 +20,7 @@ function! neocomplete#sources#php#helper#make_dict(...)
   if a:0 == 0
     let l:locale = g:neocomplete_php_locale
   else
-    let l:local = a:1
+    let l:locale = a:1
   endif
 
   call neocomplete#sources#php#helper#prepare_php_manual(l:locale)
