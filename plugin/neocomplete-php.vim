@@ -6,6 +6,10 @@ if exists('g:loaded_neocomplete_php')
 endif
 let g:loaded_neocomplete_php = 1
 
+if !exists('g:neocomplete_php_directory')
+    let g:neocomplete_php_directory = $HOME.'/.neocomplete-php'
+endif
+
 let g:neocomplete_php_locale = get(g:, 'neocomplete_php_locale', 'en')
 let g:neocomplete_php_dict = {
   \ 'internal_functions' : []
