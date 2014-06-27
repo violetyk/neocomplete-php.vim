@@ -9,7 +9,7 @@ let s:Process = s:V.import('Process')
 let s:XML     = s:V.import('Web.XML')
 let s:String  = s:V.import('Data.String')
 
-let s:work_dir = $HOME . '/.neocomplete-php/'
+let s:work_dir = g:neocomplete_php_directory . '/'
 let s:phpdoc_dir = s:work_dir . 'phpdoc/'
 let s:cache_dir = s:work_dir . 'cache/'
 
