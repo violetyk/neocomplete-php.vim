@@ -14,7 +14,7 @@ function! neocomplete#sources#php#define() "{{{
   return s:source
 endfunction "}}}
 
-let s:V       = vital#of('neocomplete-php')
+let s:V       = vital#of('neocomplete_php')
 let s:Message = s:V.import('Vim.Message')
 
 function! s:source.gather_candidates(...) "{{{
@@ -31,13 +31,13 @@ function! s:source.hooks.on_init(context) "{{{
   " call neocomplete#custom#source('syntax', 'disabled_filetypes', s:source.filetypes)
   " call neocomplete#custom#source('tag', 'disabled_filetypes', s:source.filetypes)
 
-  let l:locale = g:neocomplete_php_locale
-  if neocomplete#sources#php#helper#has_candidate_cache(l:locale)
-    call neocomplete#sources#php#helper#load_candidate_cache(l:locale)
+  let locale = g:neocomplete_php_locale
+  if neocomplete#sources#php#helper#has_candidate_cache(locale)
+    call neocomplete#sources#php#helper#load_candidate_cache(locale)
   endif
 
   if empty(g:neocomplete_php_dict.internal_functions)
-    call s:Message.warn('no dictionary. run command :PhpMakeDict ' . l:locale)
+    call s:Message.warn('no dictionary. run command :PhpMakeDict ' . locale)
     sleep 3
     return
   endif
